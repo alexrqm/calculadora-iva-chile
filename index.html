@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calculadora IVA Chile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="app-header">
+      <h1>Calculadora IVA Chile</h1>
+      <p class="lead">Cálculo rápido de Neto, IVA 19% y Total en pesos chilenos</p>
+    </header>
+
+    <section class="top-cards" aria-label="Resumen de totales">
+      <div class="card" id="card-neto" aria-live="polite">
+        <div class="card-label">Total neto</div>
+        <div class="card-value" id="total-neto">$0</div>
+      </div>
+      <div class="card" id="card-iva" aria-live="polite">
+        <div class="card-label">IVA 19%</div>
+        <div class="card-value" id="total-iva">$0</div>
+      </div>
+      <div class="card" id="card-total" aria-live="polite">
+        <div class="card-label">Total con IVA</div>
+        <div class="card-value" id="total-coniva">$0</div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <div class="actions">
+        <button id="add-row" class="btn primary">+ Agregar precio</button>
+        <button id="clear-all" class="btn">Limpiar todo</button>
+        <button id="delete-saved" class="btn danger">Borrar datos guardados</button>
+      </div>
+      <div class="copy-area">
+        <button id="copy-total" class="btn">Copiar total</button>
+        <div id="copy-msg" class="copy-msg" aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <section class="table-wrap" aria-label="Lista de precios">
+      <table class="prices" id="prices-table">
+        <thead>
+          <tr>
+            <th>Producto / concepto</th>
+            <th>Cantidad</th>
+            <th>Valor ingresado</th>
+            <th>Tipo de valor</th>
+            <th>Neto</th>
+            <th>IVA</th>
+            <th>Total</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody id="prices-body">
+          <!-- Filas generadas por app.js -->
+        </tbody>
+      </table>
+    </section>
+
+    <section class="summary-bottom" aria-label="Resumen final">
+      <div class="summary-item">Líneas: <span id="summary-lines">0</span></div>
+      <div class="summary-item">Unidades: <span id="summary-units">0</span></div>
+      <div class="summary-item">Neto: <span id="summary-neto">$0</span></div>
+      <div class="summary-item">IVA: <span id="summary-iva">$0</span></div>
+      <div class="summary-item">Total: <span id="summary-total">$0</span></div>
+    </section>
+
+    <div id="live-msg" class="sr-only" aria-live="polite"></div>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
