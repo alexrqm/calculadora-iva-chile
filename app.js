@@ -80,7 +80,9 @@ function createRowElement(item){
     const v = parseInt(e.target.value,10);
     item.qty = Number.isFinite(v) && v > 0 ? v : 1;
     e.target.value = item.qty;
-    render(); save();
+    if (typeof tr !== 'undefined' && tr.updateOutputs) tr.updateOutputs();
+    recalcTotals();
+    save();
   });
   tdQty.appendChild(inputQty);
 
@@ -94,10 +96,12 @@ function createRowElement(item){
     e.target.value = item.valueEntered ? String(item.valueEntered) : '';
   });
   inputVal.addEventListener('input', e => {
-    const cleaned = e.target.value.replace(/[^0-9\-]/g,'');
+    const cleaned = e.target.value.replace(/[^0-9\\-]/g,'');
     e.target.value = cleaned;
     item.valueEntered = parseCurrency(cleaned);
-    render(); save();
+    if (typeof tr !== 'undefined' && tr.updateOutputs) tr.updateOutputs();
+    recalcTotals();
+    save();
   });
   inputVal.addEventListener('blur', e => {
     e.target.value = item.valueEntered ? formatMoney(item.valueEntered) : '';
@@ -113,7 +117,7 @@ function createRowElement(item){
   selectType.appendChild(optN); selectType.appendChild(optC);
   selectType.value = item.type || 'neto';
   selectType.setAttribute('aria-label','Tipo de valor');
-  selectType.addEventListener('change', e => { item.type = e.target.value; render(); save(); });
+  selectType.addEventListener('change', e => { item.type = e.target.value; if (typeof tr !== 'undefined' && tr.updateOutputs) tr.updateOutputs(); recalcTotals(); save(); });
   tdType.appendChild(selectType);
 
   // Neto, IVA, Total (outputs)
