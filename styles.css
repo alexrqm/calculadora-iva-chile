@@ -28,7 +28,7 @@ body{font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvet
 .copy-msg{font-size:0.9rem; color:var(--muted)}
 /* Table layout improvements */
 .table-wrap{overflow:auto; background:transparent}
-table.prices{width:100%; border-collapse:collapse; background:transparent; table-layout:fixed; min-width:900px}
+table.prices{width:100%; border-collapse:collapse; background:transparent; table-layout:auto}
 table th, table td{padding:10px 8px; text-align:left; vertical-align:middle}
 table thead th{font-size:0.9rem; color:var(--muted); background:transparent; padding-bottom:12px}
 table thead th{white-space:nowrap}
@@ -39,7 +39,7 @@ table tbody td{border-bottom:1px solid rgba(0,0,0,0.03)}
 input[type="text"], input[type="number"], select{padding:8px 10px; border-radius:8px; border:1px solid #e6e9ef; background:white; width:100%; box-sizing:border-box}
 /* Limit very wide inputs for large screens while still remaining fluid */
 td:nth-child(2) input[type="number"]{max-width:120px}
-td:nth-child(3) input[type="text"]{max-width:160px}
+td:nth-child(3) input[type="text"]{max-width:120px}
 
 /* Numeric output columns: alineación a la derecha, no-wrap, y mínimos para evitar solapamiento */
 td:nth-child(5), td:nth-child(6), td:nth-child(7){
@@ -48,12 +48,18 @@ td:nth-child(5), td:nth-child(6), td:nth-child(7){
   padding-left:12px;
 }
 /* Force minimum widths for numeric columns */
-col:nth-child(5){min-width:140px}
-col:nth-child(6){min-width:120px}
-col:nth-child(7){min-width:140px}
-
+/* Ensure numeric columns have sufficient min-width */
+col:nth-child(5){min-width:120px}
+col:nth-child(6){min-width:100px}
+col:nth-child(7){min-width:120px}
 /* Ensure delete column stays compact */
 col:nth-child(8){min-width:70px}
+
+/* Add separation between numeric columns */
+td:nth-child(5), td:nth-child(6), td:nth-child(7){padding-left:14px}
+
+/* Prevent inputs from overflowing into numeric columns */
+td input{max-width:100%}
 
 /* Header alignment for small screens */
 table thead th, table tbody td{box-sizing:border-box}
