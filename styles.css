@@ -35,6 +35,14 @@ table thead th{white-space:nowrap}
 table thead th{font-weight:600}
 table tbody tr{background:var(--card); border-radius:8px; box-shadow:var(--shadow); margin-bottom:8px}
 table tbody td{border-bottom:1px solid rgba(0,0,0,0.03)}
+/* Prevent long numbers from overflowing into adjacent columns */
+table td{overflow:hidden}
+
+/* Truncate long monetary strings with ellipsis */
+.money{display:inline-block; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+/* Cards should also avoid bursting with huge numbers */
+.card-value{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 /* Make form controls fill cell width to avoid overflow and truncated inputs */
 input[type="text"], input[type="number"], select{padding:8px 10px; border-radius:8px; border:1px solid #e6e9ef; background:white; width:100%; box-sizing:border-box}
 /* Limit very wide inputs for large screens while still remaining fluid */

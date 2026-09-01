@@ -174,9 +174,9 @@ function createRowElement(item){
     const ivaRounded = Math.round(iva);
     const totalRounded = Math.round(total);
 
-    tdNeto.textContent = formatMoney(netoRounded);
-    tdIva.textContent = formatMoney(ivaRounded);
-    tdTotal.textContent = formatMoney(totalRounded);
+    tdNeto.innerHTML = `<span class="money">${formatMoney(netoRounded)}</span>`;
+    tdIva.innerHTML = `<span class="money">${formatMoney(ivaRounded)}</span>`;
+    tdTotal.innerHTML = `<span class="money">${formatMoney(totalRounded)}</span>`;
   }
 
   // initial
@@ -224,9 +224,9 @@ function recalcTotals(){
   const ivaR = Math.round(sumIva);
   const totalR = Math.round(sumTotal);
 
-  refs.totalNeto.textContent = formatMoney(netoR);
-  refs.totalIva.textContent = formatMoney(ivaR);
-  refs.totalConIva.textContent = formatMoney(totalR);
+  refs.totalNeto.innerHTML = `<span class="money">${formatMoney(netoR)}</span>`;
+  refs.totalIva.innerHTML = `<span class="money">${formatMoney(ivaR)}</span>`;
+  refs.totalConIva.innerHTML = `<span class="money">${formatMoney(totalR)}</span>`;
 
   refs.summaryLines.textContent = rows.length;
   refs.summaryUnits.textContent = totalUnits;
