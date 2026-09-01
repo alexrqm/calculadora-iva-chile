@@ -15,6 +15,7 @@ body{font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvet
 .lead{margin:6px 0 18px; color:var(--muted); font-size:0.95rem}
 .top-cards{display:flex; gap:14px; margin-bottom:18px}
 .card{background:var(--card); border-radius:var(--radius); padding:14px 18px; box-shadow:var(--shadow); flex:1; min-width:0}
+.top-cards{align-items:stretch}
 .card-label{font-size:0.85rem; color:var(--muted)}
 .card-value{font-weight:700; margin-top:6px; font-size:1.1rem}
 .controls{display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px}
@@ -29,14 +30,21 @@ body{font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvet
 .table-wrap{overflow:auto; background:transparent}
 table.prices{width:100%; border-collapse:collapse; background:transparent; table-layout:fixed}
 table th, table td{padding:10px 8px; text-align:left; vertical-align:middle}
-table thead th{font-size:0.85rem; color:var(--muted); background:transparent}
+table thead th{font-size:0.9rem; color:var(--muted); background:transparent; padding-bottom:12px}
+table thead th{font-weight:600}
 table tbody tr{background:var(--card); border-radius:8px; box-shadow:var(--shadow); margin-bottom:8px}
 table tbody td{border-bottom:1px solid rgba(0,0,0,0.03)}
 /* Make form controls fill cell width to avoid overflow and truncated inputs */
 input[type="text"], input[type="number"], select{padding:8px 10px; border-radius:8px; border:1px solid #e6e9ef; background:white; width:100%; box-sizing:border-box}
 /* Limit very wide inputs for large screens while still remaining fluid */
 td:nth-child(2) input[type="number"]{max-width:120px}
-td:nth-child(3) input[type="text"]{max-width:180px}
+td:nth-child(3) input[type="text"]{max-width:220px}
+
+/* Header alignment for small screens */
+table thead th, table tbody td{box-sizing:border-box}
+
+/* Improve delete button sizing */
+td:last-child .btn{padding:8px 10px}
 input[type="text"]:focus, input[type="number"]:focus, select:focus{outline:3px solid rgba(11,95,255,0.12)}
 .summary-bottom{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; color:var(--muted)}
 .summary-item{background:var(--card); padding:10px 12px; border-radius:8px; box-shadow:var(--shadow)}
